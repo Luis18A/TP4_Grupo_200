@@ -4,15 +4,10 @@ public class Animal extends Especie{
 	
 	private String tipoAlimentacion;
 	private String periodosCelo;
+	private boolean peligroExtincion;
 	
 	public Animal() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public Animal(String tipoAlimentacion, String periodosCelo) {
-		super();
-		this.tipoAlimentacion = tipoAlimentacion;
-		this.periodosCelo = periodosCelo;
 	}
 
 	public String getTipoAlimentacion() {
@@ -31,8 +26,29 @@ public class Animal extends Especie{
 		this.periodosCelo = periodosCelo;
 	}
 
+	public boolean isPeligroExtincion() {
+		return peligroExtincion;
+	}
+
+	public void setPeligroExtincion(boolean peligroExtincion) {
+		this.peligroExtincion = peligroExtincion;
+	}
+
+	public Animal(String tipoAlimentacion, String periodosCelo, boolean peligroExtincion) {
+		super();
+		this.tipoAlimentacion = tipoAlimentacion;
+		this.periodosCelo = periodosCelo;
+		this.peligroExtincion = peligroExtincion;
+	}
+
 	@Override
 	public String toString() {
-		return "Animal [tipoAlimentacion=" + tipoAlimentacion + ", periodosCelo=" + periodosCelo + "]";
+		return "Animal [tipoAlimentacion=" + tipoAlimentacion + ", periodosCelo=" + periodosCelo + ", peligroExtincion="
+				+ peligroExtincion + "]";
 	}
+
+	
+	
+	
+	
 }

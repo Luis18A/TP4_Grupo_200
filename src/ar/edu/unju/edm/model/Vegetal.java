@@ -2,24 +2,24 @@ package ar.edu.unju.edm.model;
 
 public class Vegetal extends Especie{
 	
-	private String floracion;
+	private boolean floracion;
 	private String periodoProduccion;
 	
 	public Vegetal() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vegetal(String floracion, String periodoProduccion) {
+	public Vegetal(boolean floracion, String periodoProduccion) {
 		super();
 		this.floracion = floracion;
 		this.periodoProduccion = periodoProduccion;
 	}
 	
-	public String getFloracion() {
+	public boolean getFloracion() {
 		return floracion;
 	}
 
-	public void setFloracion(String floracion) {
+	public void setFloracion(boolean floracion) {
 		this.floracion = floracion;
 	}
 

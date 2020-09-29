@@ -1,27 +1,15 @@
 package ar.edu.unju.edm.model;
 
 public class OrganismoProvincial {
-
+	
 	private String nombreOrganismo;
+	private long cuit;
 	private String representanteTitular;
-	private String representanteAlterno;
 	private int telefono;
 	private String direccion;
-	private String paginaWeb;
 	
 	public OrganismoProvincial() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public OrganismoProvincial(String nombreOrganismo, String representanteTitular, String representanteAlterno,
-			int telefono, String direccion, String paginaWeb) {
-		super();
-		this.nombreOrganismo = nombreOrganismo;
-		this.representanteTitular = representanteTitular;
-		this.representanteAlterno = representanteAlterno;
-		this.telefono = telefono;
-		this.direccion = direccion;
-		this.paginaWeb = paginaWeb;
 	}
 
 	public String getNombreOrganismo() {
@@ -32,20 +20,20 @@ public class OrganismoProvincial {
 		this.nombreOrganismo = nombreOrganismo;
 	}
 
+	public long getCuit() {
+		return cuit;
+	}
+
+	public void setCuit(long cuit) {
+		this.cuit = cuit;
+	}
+
 	public String getRepresentanteTitular() {
 		return representanteTitular;
 	}
 
 	public void setRepresentanteTitular(String representanteTitular) {
 		this.representanteTitular = representanteTitular;
-	}
-
-	public String getRepresentanteAlterno() {
-		return representanteAlterno;
-	}
-
-	public void setRepresentanteAlterno(String representanteAlterno) {
-		this.representanteAlterno = representanteAlterno;
 	}
 
 	public int getTelefono() {
@@ -64,18 +52,24 @@ public class OrganismoProvincial {
 		this.direccion = direccion;
 	}
 
-	public String getPaginaWeb() {
-		return paginaWeb;
-	}
-
-	public void setPaginaWeb(String paginaWeb) {
-		this.paginaWeb = paginaWeb;
+	public OrganismoProvincial(String nombreOrganismo, long cuit, String representanteTitular, int telefono,
+			String direccion) {
+		super();
+		this.nombreOrganismo = nombreOrganismo;
+		this.cuit = cuit;
+		this.representanteTitular = representanteTitular;
+		this.telefono = telefono;
+		this.direccion = direccion;
 	}
 
 	@Override
 	public String toString() {
-		return "OrganismoProvincial [nombreOrganismo=" + nombreOrganismo + ", representanteTitular="
-				+ representanteTitular + ", representanteAlterno=" + representanteAlterno + ", telefono=" + telefono
-				+ ", direccion=" + direccion + ", paginaWeb=" + paginaWeb + "]";
+		return "OrganismoProvincial [nombreOrganismo=" + nombreOrganismo + ", cuit=" + cuit + ", representanteTitular="
+				+ representanteTitular + ", telefono=" + telefono + ", direccion=" + direccion + "]";
 	}
+
+	
+
+	
+	
 }
