@@ -95,7 +95,7 @@ public class Principal1 {
 			int op=0;
 				do {
 				System.out.println("\n--------------------------------------MENU-------------------------------------");
-				System.out.println("1. Registrar una provincia nueva: ");
+				System.out.println("1. Registrar una provincia nueva ");
 				System.out.println("2. Registrar datos de Organismo Provincial a cargo de un parque");
 				System.out.println("3. Registrar un Parque natural");
 				System.out.println("4. Registrar especies de Parque natural");
@@ -210,7 +210,7 @@ public class Principal1 {
 						}
 						parquesNaturales.put(parque.getCodParque(), parque);
 						System.out.println("Parque Natural agregado con éxito!");
-						System.out.println(organismosProvinciales);
+						System.out.println(parquesNaturales);
 						//CONTROLAR SI NO EXISTE YA EL PARQUE NATURAL INGRESADO POR EL CODIGO
 					break;
 				case 4: 
@@ -218,7 +218,7 @@ public class Principal1 {
 					//TENER EN CUENTA QUE ES UN LIST DE ESPECIES PARA UN OBJETO PARQUE QUE ESTA DENTRO DE OTRO LIST DE PARQUES
 					int codigoBuscado=0;
 					boolean booleano=false;
-					System.out.println("Ingrese codigo del parque al que desea agregar especie: ");
+					System.out.println("Ingrese codigo del parque al que desea agregar especies: ");
 					codigoBuscado=sc.nextInt();
 					
 					Iterator iterator = parquesNaturales.keySet().iterator();
@@ -236,7 +236,7 @@ public class Principal1 {
 							System.out.println("2. Animal");
 							System.out.println("3. Mineral");
 							System.out.println("4. CANCELAR");
-							System.out.println("Ingrese N° de opción según la especie que quiere agregar: ");
+							System.out.println("Ingrese N° de opción según la especie que quiere agregar al "+parquesNaturales.get(codigoBuscado).getNombre());
 							opcion=sc.nextInt();
 							
 							switch(opcion) {
@@ -295,7 +295,7 @@ public class Principal1 {
 											Integer key = (Integer) it.next();
 											System.out.println(parquesNaturales.get(codigoBuscado).getEspecies().get(key));
 											}
-										
+										System.out.println(parquesNaturales);
 									break;
 								case 2:
 									Animal animal = new Animal();
@@ -304,6 +304,8 @@ public class Principal1 {
 									Mineral mineral = new Mineral();
 									break;
 								case 4: System.out.println("Cancelando...");
+									break;
+								default: System.out.println("Opción no válida");
 									break;
 							}
 							
@@ -329,7 +331,7 @@ public class Principal1 {
 					break;
 				case 5: System.out.println("Saliendo...");
 					break;
-				default: System.out.println("Opcion no valida");
+				default: System.out.println("Opcion no válida");
 					break;
 				}
 				}
