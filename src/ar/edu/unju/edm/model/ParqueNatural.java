@@ -2,7 +2,9 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ParqueNatural {
 
@@ -11,8 +13,9 @@ public class ParqueNatural {
 	private LocalDate fechaDeclaracion;
 	private int extension;
 	private String ubicacionGeografica;
+	private Provincia provincia;
 	private OrganismoProvincial nombreOrganismo;
-	List<Especie> especies = new ArrayList<Especie>();
+	Map<Integer,Especie> especies = new HashMap<Integer,Especie>();
 	
 	public ParqueNatural() {
 		// TODO Auto-generated constructor stub
@@ -58,6 +61,14 @@ public class ParqueNatural {
 		this.ubicacionGeografica = ubicacionGeografica;
 	}
 
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
 	public OrganismoProvincial getNombreOrganismo() {
 		return nombreOrganismo;
 	}
@@ -66,22 +77,24 @@ public class ParqueNatural {
 		this.nombreOrganismo = nombreOrganismo;
 	}
 
-	public List<Especie> getEspecies() {
+	public Map<Integer, Especie> getEspecies() {
 		return especies;
 	}
 
-	public void setEspecies(List<Especie> especies) {
+	public void setEspecies(Map<Integer, Especie> especies) {
 		this.especies = especies;
 	}
 
 	public ParqueNatural(int codParque, String nombre, LocalDate fechaDeclaracion, int extension,
-			String ubicacionGeografica, OrganismoProvincial nombreOrganismo, List<Especie> especies) {
+			String ubicacionGeografica, Provincia provincia, OrganismoProvincial nombreOrganismo,
+			Map<Integer, Especie> especies) {
 		super();
 		this.codParque = codParque;
 		this.nombre = nombre;
 		this.fechaDeclaracion = fechaDeclaracion;
 		this.extension = extension;
 		this.ubicacionGeografica = ubicacionGeografica;
+		this.provincia = provincia;
 		this.nombreOrganismo = nombreOrganismo;
 		this.especies = especies;
 	}
@@ -89,8 +102,8 @@ public class ParqueNatural {
 	@Override
 	public String toString() {
 		return "ParqueNatural [codParque=" + codParque + ", nombre=" + nombre + ", fechaDeclaracion=" + fechaDeclaracion
-				+ ", extension=" + extension + ", ubicacionGeografica=" + ubicacionGeografica + ", nombreOrganismo="
-				+ nombreOrganismo + ", especies=" + especies + "]";
+				+ ", extension=" + extension + ", ubicacionGeografica=" + ubicacionGeografica + ", provincia="
+				+ provincia + ", nombreOrganismo=" + nombreOrganismo + ", especies=" + especies + "]";
 	}
 
 	
