@@ -33,10 +33,8 @@ public class Vegetal extends Especie{
 
 	@Override
 	public String toString() {
-		return "Vegetal [floracion=" + floracion + ", periodoProduccion=" + periodoProduccion
-				+ ", getDenominacionCientifica()=" + getDenominacionCientifica() + ", getDenominacionVulgar()="
-				+ getDenominacionVulgar() + ", getCodigoNumerico()=" + getCodigoNumerico() + ", getTipoEspecie()="
-				+ getTipoEspecie() + "]";
+		return "Vegetal [Codigo numérico=" + getCodigoNumerico() + ", Denominación científica=" + getDenominacionCientifica()
+			+ ", Denominación vulgar=" + getDenominacionVulgar() +  ", Tipo de especie=" + getTipoEspecie() + ", Floración= " + floracion + ", Período de Producción=" + periodoProduccion + "]"; 
 	}
 
 	

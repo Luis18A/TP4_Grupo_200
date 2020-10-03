@@ -101,12 +101,17 @@ public class ParqueNatural {
 
 	@Override
 	public String toString() {
-		return "ParqueNatural [codParque=" + codParque + ", nombre=" + nombre + ", fechaDeclaracion=" + fechaDeclaracion
-				+ ", extension=" + extension + ", ubicacionGeografica=" + ubicacionGeografica + ", provincia="
-				+ provincia + ", nombreOrganismo=" + nombreOrganismo + ", especies=" + especies + "]";
+		return "Parque Natural [Código Parque Natural=" + codParque + ", Nombre=" + nombre + ", Fecha de Declaración=" + fechaDeclaracion
+				+ ", Extensión=" + extension + ", Ubicacion Geográfica=" + ubicacionGeografica + ", Provincia="
+				+ provincia + ", Nombre del Organismo Provincial=" + nombreOrganismo + ", Especies que habitan=" + especies + "]";
 	}
 
 	
-
+	public int calcularAnios() {
+		int a=0;
+		int anio= fechaDeclaracion.getYear();
+		a= LocalDate.now().getYear()-anio;
+		return a;
+	}
 	
 }
