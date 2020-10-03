@@ -15,7 +15,7 @@ public class ParqueNatural {
 	private String ubicacionGeografica;
 	private Provincia provincia;
 	private OrganismoProvincial nombreOrganismo;
-	Map<Integer,Especie> especies = new HashMap<Integer,Especie>();
+	private Map<Integer,Especie> especies = new HashMap<Integer,Especie>();
 	
 	public ParqueNatural() {
 		// TODO Auto-generated constructor stub

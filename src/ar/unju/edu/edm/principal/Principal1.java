@@ -285,8 +285,6 @@ public class Principal1 {
 							vegetal.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
 							vegetal.setDenominacionVulgar(sc.next());
-							System.out.println("Ingrese tipo de Especie: ");
-							vegetal.setTipoEspecie(sc.next());
 								boolean bienIngresado=false;
 								while(bienIngresado==false){
 									System.out.println("Ingrese S si tiene floración, ingrese N si no lo tiene: ");
@@ -323,8 +321,6 @@ public class Principal1 {
 							animal.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
 							animal.setDenominacionVulgar(sc.next());
-							System.out.println("Ingrese tipo de Especie: ");
-							animal.setTipoEspecie(sc.next());
 							System.out.println("Ingrese tipo de alimentación: ");
 							animal.setTipoAlimentacion(sc.next());
 							System.out.println("Ingrese período de celo: ");
@@ -357,8 +353,6 @@ public class Principal1 {
 							mineral.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
 							mineral.setDenominacionVulgar(sc.next());
-							System.out.println("Ingrese tipo de Especie: ");
-							mineral.setTipoEspecie(sc.next());
 							System.out.println("Ingrese el tipo de mineral: ");
 							mineral.setTipoMineral(sc.next());
 							especies.put(mineral.getCodigoNumerico(), mineral);

@@ -23,8 +23,8 @@ public class Mineral extends Especie{
 
 	@Override
 	public String toString() {
-		return "Mineral [Codigo Numerico=" + getCodigoNumerico() + ", Denominación científica=" + getDenominacionCientifica() + ", Denominación vulgar=" + getDenominacionVulgar() + 
-				", Tipo de especie=" + getTipoEspecie() + ", Tipo de Mineral=" + tipoMineral + "]";
+		return "Mineral [Codigo Numerico=" + getCodigoNumerico() + ", Denominación científica=" + getDenominacionCientifica() + 
+				", Denominación vulgar=" + getDenominacionVulgar() + ", Tipo de Mineral=" + tipoMineral + "]";
 	}
 	
 	

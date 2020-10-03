@@ -3,12 +3,11 @@ package ar.edu.unju.edm.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Especie {
+public abstract class Especie {
 	
 	private String denominacionCientifica;
 	private String denominacionVulgar;
 	private int codigoNumerico;
-	private String tipoEspecie;
 	private Map<Integer,ParqueNatural> parquesNaturales = new HashMap<Integer,ParqueNatural>();
 	
 	public Especie() {
@@ -39,14 +38,6 @@ public class Especie {
 		this.codigoNumerico = codigoNumerico;
 	}
 
-	public String getTipoEspecie() {
-		return tipoEspecie;
-	}
-
-	public void setTipoEspecie(String tipoEspecie) {
-		this.tipoEspecie = tipoEspecie;
-	}
-
 	public Map<Integer, ParqueNatural> getParquesNaturales() {
 		return parquesNaturales;
 	}
@@ -55,21 +46,19 @@ public class Especie {
 		this.parquesNaturales = parquesNaturales;
 	}
 
-	public Especie(String denominacionCientifica, String denominacionVulgar, int codigoNumerico, String tipoEspecie,
+	public Especie(String denominacionCientifica, String denominacionVulgar, int codigoNumerico,
 			Map<Integer, ParqueNatural> parquesNaturales) {
 		super();
 		this.denominacionCientifica = denominacionCientifica;
 		this.denominacionVulgar = denominacionVulgar;
 		this.codigoNumerico = codigoNumerico;
-		this.tipoEspecie = tipoEspecie;
 		this.parquesNaturales = parquesNaturales;
 	}
 
 	@Override
 	public String toString() {
 		return "Especie [denominacionCientifica=" + denominacionCientifica + ", denominacionVulgar="
-				+ denominacionVulgar + ", codigoNumerico=" + codigoNumerico + ", tipoEspecie=" + tipoEspecie
-				+ ", parquesNaturales=" + parquesNaturales + "]";
+				+ denominacionVulgar + ", codigoNumerico=" + codigoNumerico + ", parquesNaturales=" + parquesNaturales + "]";
 	}
 
 	

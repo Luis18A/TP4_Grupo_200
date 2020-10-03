@@ -44,7 +44,7 @@ public class Animal extends Especie{
 	@Override
 	public String toString() {
 		return "Animal [Codigo numérico=" + getCodigoNumerico() + ", Denominación científica=" + getDenominacionCientifica() + 
-				", Denominación vulgar=" + getDenominacionVulgar() +  ", Tipo de especie=" + getTipoEspecie() + 
+				", Denominación vulgar=" + getDenominacionVulgar() + 
 				"Tipo de Alimentación=" + tipoAlimentacion + ", Períodos de celo=" + periodosCelo + ", Peligro de extinción=" + peligroExtincion + "]";
 	}
 
