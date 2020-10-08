@@ -1,10 +1,12 @@
 package ar.unju.edu.edm.principal;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +38,24 @@ public class Principal1 {
 
 		Scanner sc = new Scanner(System.in);
 		int op=0;
+		boolean ing;
 		do {
-		System.out.println("\n---------------------MENU PRINCIPAL---------------------");
-		System.out.println("1. Ingresar usuario ");
-		System.out.println("2. SALIR");
-		System.out.println("\nIngrese opción: ");
-		op=sc.nextInt(); 
+			do {
+				System.out.println("\n---------------------MENU PRINCIPAL---------------------");
+				System.out.println("1. Ingresar usuario ");
+				System.out.println("2. SALIR");
+			ing=true;
+			System.out.println("\nIngrese opción: ");
+			try {
+				op=sc.nextInt();
+			}catch(InputMismatchException i){
+				System.out.println("\nIngreso inválido. Debe ingresar una opción numérica.");
+				sc.next();
+				ing=false;
+			}
+		}while(ing==false);
+		
+		
 			switch(op){
 			case 1:
 				System.out.println("Ingrese nombre de usuario: ");
@@ -88,22 +102,44 @@ public class Principal1 {
 	public static void mostrarMenuAdministrativo(Map<Integer,ParqueNatural> parquesNaturales, Map<Integer,Especie> especies, List<OrganismoProvincial> organismosProvinciales,List<Provincia> provincias) {
 		Scanner sc= new Scanner(System.in);
 		int op=0;
+		boolean ing;
 		do {
-		System.out.println("\n-------------------------------MENU ADMINISTRATIVO--------------------------------");
-		System.out.println("1. Registrar una provincia nueva ");
-		System.out.println("2. Registrar datos de Organismo Provincial a cargo de un parque");
-		System.out.println("3. Registrar un Parque natural");
-		System.out.println("4. Registrar especies de Parque natural");
-		System.out.println("5. Salir");
-		System.out.println("\nIngrese opción: ");
-		op=sc.nextInt();
-		
+			do {
+			System.out.println("\n-------------------------------MENU ADMINISTRATIVO--------------------------------");
+			System.out.println("1. Registrar una provincia nueva ");
+			System.out.println("2. Registrar datos de Organismo Provincial a cargo de un parque");
+			System.out.println("3. Registrar un Parque natural");
+			System.out.println("4. Registrar especies de Parque natural");
+			System.out.println("5. Salir");
+			ing=true;
+			System.out.println("\nIngrese opción: ");
+			try {
+				op=sc.nextInt();
+			}catch(InputMismatchException i){
+				System.out.println("\nIngreso inválido. Debe ingresar una opción numérica.");
+				sc.next();
+				ing=false;
+				}
+			}while(ing==false);
+				
 		switch(op) {
 		
 		case 1:
 				Provincia provNueva= new Provincia();
-				System.out.println("Ingrese código de la provincia: ");
-				int codigoIngresado = sc.nextInt();
+				int codigoIngresado=0;
+				boolean ing2;
+				do {
+					ing2=true;
+					System.out.println("Ingrese código de la provincia: ");
+					try {
+						codigoIngresado = sc.nextInt();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+						sc.next();
+						ing2=false;
+					}
+				}while(ing2==false);
+				
 				//SE CONTROLA SI NO EXISTE YA UNA PROVINCIA POR EL CODIGO
 				int w=-1, x=0;
 				boolean ba=false;
@@ -129,9 +165,21 @@ public class Principal1 {
 				
 			break;
 		case 2:
-				OrganismoProvincial orgNuevo= new OrganismoProvincial();
-				System.out.println("Ingrese el CUIT: ");
-				long cuitIngresado = sc.nextLong();
+				OrganismoProvincial orgNuevo= new OrganismoProvincial();	
+				long cuitIngresado=0;
+				boolean ing3;
+				do {
+					ing3=true;
+					System.out.println("Ingrese el CUIT: ");
+					try {
+						cuitIngresado = sc.nextLong();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar un CUIT válido.\n");
+						sc.next();
+						ing3=false;
+					}
+				}while(ing3==false);
+
 				//SE CONTROLA SI NO EXISTE YA EL CORGANISMO PROVINCIAL POR EL CUIT
 				int y=-1, z=0;
 				boolean bander=false;
@@ -153,17 +201,40 @@ public class Principal1 {
 					System.out.println("Ingrese el nombre del representante titular: ");
 					orgNuevo.setRepresentanteTitular(sc.next());
 					System.out.println("Ingrese la dirección del Organismo Provincial: ");
-					orgNuevo.setDireccion(sc.next());
-					System.out.println("Ingrese el telefono: ");
-					orgNuevo.setTelefono(sc.nextInt());
+					orgNuevo.setDireccion(sc.next());	
+					int telIngresado=0;
+					boolean ing4;
+					do {
+						ing4=true;
+						System.out.println("Ingrese el telefono: ");
+						try {
+							telIngresado = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar un número de teléfono válido.\n");
+							sc.next();
+							ing4=false;
+						}
+					}while(ing4==false);			
+					orgNuevo.setTelefono(telIngresado);
 					organismosProvinciales.add(orgNuevo);
 					System.out.println("\nOrganismo Provincial agregado con éxito!");
 				}	
 			break;
 		case 3: 
-				ParqueNatural parque = new ParqueNatural();
-				System.out.println("Ingrese código del parque: ");
-				int codigoParqueIngresado = sc.nextInt();
+				ParqueNatural parque = new ParqueNatural();	
+				int codigoParqueIngresado=0;
+				boolean ing5;
+				do {
+					ing5=true;
+					System.out.println("Ingrese código del parque: ");
+					try {
+						codigoParqueIngresado = sc.nextInt();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+						sc.next();
+						ing5=false;
+					}
+				}while(ing5==false);	
 				
 				Iterator iterato = parquesNaturales.keySet().iterator();
 				boolean ban=false;
@@ -180,23 +251,90 @@ public class Principal1 {
 				parque.setCodParque(codigoParqueIngresado);
 				System.out.println("Ingrese Nombre del parque: ");
 				parque.setNombre(sc.next());
-				int dia;
-				int mes;
-				int anio;
-				System.out.println("Ingrese día de declaración como parque natural: ");
-				dia=sc.nextInt();
-				System.out.println("Ingrese mes de declaración como parque natural: ");
-				mes=sc.nextInt();
-				System.out.println("Ingrese año de declaración como parque natural: ");
-				anio=sc.nextInt();
-				LocalDate fechaDec = LocalDate.of(anio,mes,dia);
+				int dia=0;
+				int mes=0;
+				int anio=0;	
+				boolean ingr1,ingr2,ingr3,fechaIng;
+				LocalDate fechaDec=null;
+				do {
+					do {
+						ingr1=true;
+						System.out.println("Ingrese día de declaración como parque natural: ");
+						try {
+							dia = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar el NÚMERO del día del mes.\n");
+							sc.next();
+							ingr1=false;
+						}
+					}while(ingr1==false);	
+					do {
+						ingr2=true;
+						System.out.println("Ingrese mes de declaración como parque natural: ");
+						try {
+							mes = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar el NÚMERO del mes.\n");
+							sc.next();
+							ingr2=false;
+						}
+					}while(ingr2==false);	
+					do {
+						ingr3=true;
+						System.out.println("Ingrese año de declaración como parque natural: ");
+						try {
+							anio = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar el NÚMERO del año.\n");
+							sc.next();
+							ingr3=false;
+						}
+					}while(ingr3==false);	
+					try {
+						fechaDec = LocalDate.of(anio,mes,dia);
+						fechaIng=true;
+					}catch(DateTimeException e) {
+						if(dia<1 || dia>31) {
+							System.out.println("\nEl día está fuera del rango (1-31)");
+						}
+						if(mes<1 || mes>12) {
+							System.out.println("\nEl mes está fuera del rango (1-12)");
+						}
+						System.out.println("\nLa fecha es inválida. Ingrese números para día, mes y/o año dentro del rango!\n");
+						fechaIng=false;
+					}
+				}while(fechaIng==false);
+				
 				parque.setFechaDeclaracion(fechaDec);
-				System.out.println("Ingrese extensión del parque: ");
-				parque.setExtension(sc.nextInt());
+				int extIngresado=0;
+				boolean ing6;
+				do {
+					ing6=true;
+					System.out.println("Ingrese extensión del parque: ");
+					try {
+						extIngresado = sc.nextInt();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar el valor numérico de la extensión en metros.\n");
+						sc.next();
+						ing6=false;
+					}
+				}while(ing6==false);	
+				parque.setExtension(extIngresado);
 				System.out.println("Ingrese la ubicación geográfica: ");
 				parque.setUbicacionGeografica(sc.next());
-				System.out.println("Ingrese código de provincia en la que está ubicada geográficamente el parque: ");
-				int codigIngresado = sc.nextInt();
+				int codigIngresado=0;
+				boolean ing7;
+				do {
+					ing7=true;
+					System.out.println("Ingrese código de provincia en la que está ubicada geográficamente el parque: ");
+					try {
+						codigIngresado = sc.nextInt();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+						sc.next();
+						ing7=false;
+					}
+				}while(ing7==false);
 				int h=-1, c=0;
 				boolean boo=false;
 				for(Provincia pr:provincias) {
@@ -219,8 +357,20 @@ public class Principal1 {
 				}
 				
 				
-				System.out.println("Ingrese cuit de Organismo Provincial: ");
-				long cuitBuscado = sc.nextLong();
+				long cuitBuscado=0;
+				boolean ing8;
+				do {
+					ing8=true;
+					System.out.println("Ingrese cuit de Organismo Provincial: ");
+					try {
+						cuitBuscado = sc.nextLong();
+					}catch(InputMismatchException i){
+						System.out.println("\nINGRESO ERRONEO. Debe ingresar un CUIT numérico.\n");
+						sc.next();
+						ing8=false;
+					}
+				}while(ing8==false);
+				
 				int j=-1, ind=0;
 				boolean bool=false;
 				for(OrganismoProvincial orgP:organismosProvinciales) {
@@ -241,9 +391,21 @@ public class Principal1 {
 					System.out.println("Ingrese el nombre del representante titular: ");
 					orgProv.setRepresentanteTitular(sc.next());
 					System.out.println("Ingrese la dirección del Organismo Provincial: ");
-					orgProv.setDireccion(sc.next());
-					System.out.println("Ingrese el telefono: ");
-					orgProv.setTelefono(sc.nextInt());
+					orgProv.setDireccion(sc.next());	
+					int telIngresado2=0;
+					boolean ing9;
+					do {
+						ing9=true;
+						System.out.println("Ingrese el telefono: ");
+						try {
+							telIngresado2 = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar un número de teléfono válido.\n");
+							sc.next();
+							ing9=false;
+						}
+					}while(ing9==false);	
+					orgProv.setTelefono(telIngresado2);
 					organismosProvinciales.add(orgProv);
 					parque.setNombreOrganismo(orgProv);
 				}
@@ -254,9 +416,19 @@ public class Principal1 {
 		case 4: 
 			int codigoBuscado=0;
 			boolean booleano=false;
-			System.out.println("Ingrese codigo del parque al que desea agregar especies: ");
-			codigoBuscado=sc.nextInt();
-			
+			boolean ing10;
+			do {
+				ing10=true;
+				System.out.println("Ingrese codigo del parque al que desea agregar especies: ");
+				try {
+					codigoBuscado = sc.nextInt();
+				}catch(InputMismatchException i){
+					System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+					sc.next();
+					ing10=false;
+				}
+			}while(ing10==false);	
+						
 			Iterator iterator = parquesNaturales.keySet().iterator();
 			while(iterator.hasNext() && booleano==false) {
 				Integer key = (Integer) iterator.next();
@@ -267,20 +439,41 @@ public class Principal1 {
 			
 				if(booleano==true) {
 					int opcion=0;
+					boolean ing11;
 					do {
-					System.out.println("\n---------------TIPOS DE ESPECIES-----------");
-					System.out.println("1. Vegetal");
-					System.out.println("2. Animal");
-					System.out.println("3. Mineral");
-					System.out.println("4. CANCELAR");
-					System.out.println("\nIngrese N° de opción según la especie que quiere agregar al "+parquesNaturales.get(codigoBuscado).getNombre()+":");
-					opcion=sc.nextInt();
-					
+						do {
+							System.out.println("\n---------------TIPOS DE ESPECIES-----------");
+							System.out.println("1. Vegetal");
+							System.out.println("2. Animal");
+							System.out.println("3. Mineral");
+							System.out.println("4. CANCELAR"); 
+							System.out.println("\nIngrese N° de opción según la especie que quiere agregar al "+parquesNaturales.get(codigoBuscado).getNombre()+":");
+							ing11=true;
+							try {
+								opcion = sc.nextInt();
+							}catch(InputMismatchException i){
+								System.out.println("\nINGRESO ERRONEO. Debe ingresar una opción numérica.\n");
+								sc.next();
+								ing11=false;
+							}
+						}while(ing11==false);
 					switch(opcion) {
 						case 1: 
 							Vegetal vegetal = new Vegetal();
-							System.out.println("Ingrese código numérico: ");
-							vegetal.setCodigoNumerico(sc.nextInt());
+							int codigoVegetal=0;
+							boolean ing12;
+							do {
+								ing12=true;
+								System.out.println("Ingrese código numérico: ");
+								try {
+									codigoVegetal = sc.nextInt();
+								}catch(InputMismatchException i){
+									System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+									sc.next();
+									ing12=false;
+								}
+							}while(ing12==false);	
+							vegetal.setCodigoNumerico(codigoVegetal);
 							System.out.println("Ingrese denominación científica: ");
 							vegetal.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
@@ -315,8 +508,20 @@ public class Principal1 {
 							break;
 						case 2:
 							Animal animal = new Animal();
-							System.out.println("Ingrese código numérico: ");
-							animal.setCodigoNumerico(sc.nextInt());
+							int codigoAnimal=0;
+							boolean ing13;
+							do {
+								ing13=true;
+								System.out.println("Ingrese código numérico: ");
+								try {
+									codigoAnimal = sc.nextInt();
+								}catch(InputMismatchException i){
+									System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+									sc.next();
+									ing13=false;
+								}
+							}while(ing13==false);
+							animal.setCodigoNumerico(codigoAnimal);
 							System.out.println("Ingrese denominación científica: ");
 							animal.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
@@ -347,8 +552,20 @@ public class Principal1 {
 							break;
 						case 3:
 							Mineral mineral = new Mineral();
-							System.out.println("Ingrese código numérico: ");
-							mineral.setCodigoNumerico(sc.nextInt());
+							int codigoMineral=0;
+							boolean ing14;
+							do {
+								ing14=true;
+								System.out.println("Ingrese código numérico: ");
+								try {
+									codigoMineral = sc.nextInt();
+								}catch(InputMismatchException i){
+									System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+									sc.next();
+									ing14=false;
+								}
+							}while(ing14==false);
+							mineral.setCodigoNumerico(codigoMineral);
 							System.out.println("Ingrese denominación científica: ");
 							mineral.setDenominacionCientifica(sc.next());
 							System.out.println("Ingrese denominación vulgar: ");
@@ -386,15 +603,26 @@ public class Principal1 {
 	
 	public static void mostrarMenuSecretario(Map<Integer,ParqueNatural> parquesNaturales,List<OrganismoProvincial>organismosProvinciales) {
 			int op=0; Scanner sc = new Scanner(System.in);
+			boolean ing;
 			do {
-			System.out.println("\n-----------------------------------MENU SECRETARIO-------------------------------");
-			System.out.println("1. Listar todos los datos de los parques naturales ingresando una provincia");
-			System.out.println("2. Listar todas las especies (sus atributos) que habitan en el parque seleccionado y mostrar la cantidad por cada especie");
-			System.out.println("3. Mostrar todos los parques que tienen más de 10 años de haber sido declarado como parque natural");
-			System.out.println("4. Listar todos los organismos ordenados alfabéticamente");
-			System.out.println("5. Salir");
-			System.out.println("\nIngrese opción: ");
-			op=sc.nextInt();
+				do {
+					System.out.println("\n-----------------------------------MENU SECRETARIO-------------------------------");
+					System.out.println("1. Listar todos los datos de los parques naturales ingresando una provincia");
+					System.out.println("2. Listar todas las especies (sus atributos) que habitan en el parque seleccionado y mostrar la cantidad por cada especie");
+					System.out.println("3. Mostrar todos los parques que tienen más de 10 años de haber sido declarado como parque natural");
+					System.out.println("4. Listar todos los organismos ordenados alfabéticamente");
+					System.out.println("5. Salir");
+					ing=true;
+					System.out.println("\nIngrese opción: ");
+					try {
+						op=sc.nextInt();
+					}catch(InputMismatchException i){
+						System.out.println("\nIngreso inválido. Debe ingresar una opción numérica.");
+						sc.next();
+						ing=false;
+					}
+				}while(ing==false);
+
 			switch(op) {
 			case 1: 			
 				if(parquesNaturales.isEmpty()) {	
@@ -418,8 +646,20 @@ public class Principal1 {
 					System.out.println("\nNo hay parques naturales cargados!");
 				}
 				else {
-					System.out.println("Ingrese código del parque: ");		
-					int codigoIng= sc.nextInt();
+					int codigoIng=0;
+					boolean ing15;
+					do {
+						ing15=true;
+						System.out.println("Ingrese código del parque: ");		
+						try {
+							codigoIng = sc.nextInt();
+						}catch(InputMismatchException i){
+							System.out.println("\nINGRESO ERRONEO. Debe ingresar un código numérico.\n");
+							sc.next();
+							ing15=false;
+						}
+					}while(ing15==false);
+
 					boolean b=false;
 					int A=0,M=0,V=0;
 					Iterator it = parquesNaturales.keySet().iterator();
@@ -472,7 +712,7 @@ public class Principal1 {
 			case 5:
 				System.out.println("Saliendo...");
 				break;
-			default: System.out.println("Opcion no valida");
+			default: System.out.println("Opcion no valida!");
 				break;
 			}
 			} while(op!=5);
